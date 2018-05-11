@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 #El programa sirve para obtener COG* en un archivo. Los cuales agrupa y contabilisa
+#Este programa lo puedo usar para mi lista nueva
 
 import re                                           #importa el modulo de expresiones regulares
 import sys                                          #importa el modulo para modulos
