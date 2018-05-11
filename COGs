@@ -1,0 +1,53 @@
+#!/usr/bin/python
+
+#El programa sirve para obtener COG* en un archivo. Los cuales agrupa y contabilisa
+
+import re                                           #importa el modulo de expresiones regulares
+import sys                                          #importa el modulo para modulos
+
+if __name__ == "__main__":                                                                                  #define la variable __name__ para el modulo. En este caso la define como la principal __main__
+    a = re.compile('\t+(COG\d\d\d\d)\t+')                                                                   #define con expresiones regulares un valor para "a". En este caso COG*
+    cogs = [a.search(line).group(0) for line in open("5pRLE0002.txt") if a.search(line) is not None]        #Busca en el archivo open(), la expresion regular COG* por linea y las agrupa
+    grupos = [(cog, cogs.count(cog)) for cog in  set(cogs)]
+    grupos.sort(key=lambda tup: tup[1], reverse = True)
+
+    print("\tGrupo\t\t|Repetido")
+    print("--------------------------------")
+    for grupo in grupos:
+        print (grupo[0] + "|" + str(grupo[1]))
+
+'''
+Salida 5pRLE0002.txt
+	Grupo		|Repetido
+--------------------------------
+	COG0422	|132
+	COG0819	|63
+	COG0665	|36
+	COG0351	|35
+	COG2104	|29
+	COG0011	|26
+	COG2145	|20
+	COG3859	|16
+	COG0352	|14
+	COG4143	|12
+	COG0034	|8
+	COG4732	|8
+	COG0477	|6
+	COG0697	|5
+	COG4721	|2
+	COG0084	|2
+	COG1635	|2
+	COG0624	|2
+	COG2022	|2
+	COG0600	|2
+	COG1629	|2
+	COG1116	|2
+	COG0591	|1
+	COG1457	|1
+	COG3344	|1
+	COG0476	|1
+	COG3613	|1
+	COG0309	|1
+	COG4525	|1
+
+'''
